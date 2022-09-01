@@ -19,6 +19,7 @@ public class UserRepresentationAssembler implements RepresentationModelAssembler
     public org.springframework.hateoas.@NotNull EntityModel<ApplicationUser> toModel(@NotNull ApplicationUser entity) {
         return EntityModel.of(entity,
                 linkTo(methodOn(UserController.class).findById(entity.getId())).withSelfRel(),
+                linkTo(methodOn(UserController.class).deleteById(entity.getId())).withRel("delete-user"),
                 linkTo(UserController.class).withRel("users"));
     }
 }
