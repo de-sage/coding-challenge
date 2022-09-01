@@ -2,6 +2,7 @@ package com.dev.codingchallenge.userportal.controller;
 
 import com.dev.codingchallenge.userportal.assembler.UserRepresentationAssembler;
 import com.dev.codingchallenge.userportal.entity.ApplicationUser;
+import com.dev.codingchallenge.userportal.exception.UserPortalException;
 import com.dev.codingchallenge.userportal.payload.request.AddUserDto;
 import com.dev.codingchallenge.userportal.repository.UserRepository;
 import com.dev.codingchallenge.userportal.service.UserService;
@@ -63,7 +64,7 @@ public class UserController {
 
     @PostMapping("")
 //    @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> addContact(@Valid @RequestBody AddUserDto addUserDto) {
+    public ResponseEntity<?> addContact(@Valid @RequestBody AddUserDto addUserDto) throws UserPortalException {
         ApplicationUser user = userService.addUser(addUserDto);
         return ResponseEntity.ok().body(user);
     }
@@ -75,7 +76,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
+    public ResponseEntity<?> deleteById(@PathVariable("id") Long id) throws UserPortalException {
         userService.deleteUser(id);
         return ResponseEntity.ok().build();
     }
