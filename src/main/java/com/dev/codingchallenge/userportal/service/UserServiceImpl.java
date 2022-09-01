@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(long id) throws UserPortalException {
         Optional<ApplicationUser> user =  userRepository.findById(id);
 
-        if(user.isPresent()) {
+        if(user.isPresent() ) {
             userRepository.deleteById(id);
         } else {
             throw new UserPortalException("user with id "+ id +" not found" );
