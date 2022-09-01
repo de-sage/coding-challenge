@@ -7,3 +7,6 @@ go to the project directory and run the following commands
 
 1 docker-compose build
 2 docker-compose up
+
+# link to documentation
+localhost:8080/api/swagger-ui/
